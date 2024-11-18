@@ -2,11 +2,27 @@
   "name": "multi-list-bot",
   "version": "1.0.0",
   "main": "index.js",
+  "repository": "https://github.com/geymed/multi-list-bot.git",
+  "author": "Gilad Foyer <gilad.foyer@gmail.com>",
   "license": "MIT",
-  "description": "A Bot that creates WhatsApp lists",
+  "devDependencies": {
+    "@types/long": "^5.0.0",
+    "@types/node": "^22.9.0",
+    "@types/qrcode-terminal": "^0.12.2",
+    "@types/ws": "^8.5.13",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
+  },
   "dependencies": {
-    "@adiwajshing/baileys": "^5.0.0",
-    "dotenv": "^16.4.5",
-    "firebase": "^11.0.2"
+    "@hapi/boom": "^10.0.1",
+    "@whiskeysockets/baileys": "^6.7.9",
+    "long": "5",
+    "lru-cache": "10",
+    "qrcode-terminal": "^0.12.0"
+  },
+  "scripts": {
+    "dev": "ts-node src/bot.ts",
+    "build": "tsc",
+    "start": "node dist/bot.js"
   }
 }
