@@ -23,6 +23,8 @@
   "scripts": {
     "dev": "ts-node src/bot.ts",
     "build": "tsc",
-    "start": "node dist/bot.js"
+    "start": "node dist/bot.js",
+    "start:debug": "ALLOW_SELF_MESSAGES=true ts-node src/bot.ts",
+    "start:prod": "ALLOW_SELF_MESSAGES=false yarn build && yarn start"
   }
 }

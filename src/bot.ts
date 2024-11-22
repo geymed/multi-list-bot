@@ -3,6 +3,8 @@ import { Boom } from '@hapi/boom';
 import qrcode from 'qrcode-terminal';
 
 async function connectBot() {
+    const allowSelfMessages = process.env.ALLOW_SELF_MESSAGES === 'true';
+
     const { state, saveCreds } = await useMultiFileAuthState('auth_info_baileys');
 
     const sock = makeWASocket({
@@ -29,7 +31,7 @@ async function connectBot() {
 
     sock.ev.on('messages.upsert', async (m) => {
         const message = m.messages[0];
-        if (!message.message || message.key.fromMe) return;
+        if (!message.message || (message.key.fromMe && !allowSelfMessages)) return;
 
         const sender = message.key.remoteJid!;
         const text = message.message.conversation || '';
